@@ -1,9 +1,26 @@
-version: "3"
+version: '2'
 services:
-  app:
-    container_name: sample-node-project
-    restart: always
-    build: .
-    ports: 
-      - '80:3000'
-    image: sample-node-project
+    nginx:
+        restart: always
+        container_name: nginx
+        build: ./nginx
+        ports:
+            - "80:80"
+        volumes_from:
+            - web
+        links:
+            - web:web
+    web:
+        restart: always
+        container_name: web
+        build: .
+        expose:
+            - "8000"
+        env_file: .env
+        volumes:
+            - ./web:/web
+        links:
+            - db:db
+        depends_on:
+            - db
+        command: ./entrypoint.sh
