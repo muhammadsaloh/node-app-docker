@@ -1,15 +1,5 @@
 version: '2'
 services:
-    nginx:
-        restart: always
-        container_name: nginx
-        build: ./nginx
-        ports:
-            - "80:80"
-        volumes_from:
-            - web
-        links:
-            - web:web
     web:
         restart: always
         container_name: web
