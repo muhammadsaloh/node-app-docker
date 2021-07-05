@@ -1,16 +1,16 @@
 version: '2'
 services:
-    web:
-        restart: always
-        container_name: web
-        build: .
-        expose:
-            - "8000"
-        env_file: .env
-        volumes:
-            - ./web:/web
-        links:
-            - db:db
-        depends_on:
-            - db
-        command: ./entrypoint.sh
+    app:
+      container_name: web
+      restart: always
+      build: .
+      ports: 
+       - '80:3000'
+      links:
+       - mongo
+    mongo: 
+      container_name: mongo
+      image: mongo
+      ports: 
+       - '27017:27017'
+      
