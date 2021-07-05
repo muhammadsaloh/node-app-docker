@@ -1,8 +1,9 @@
 version: "3"
 services:
-  container_name: sample-node-project
-  restart: always
-  build: .
-  ports: 
-    - '80:3000'
-  image: sample-node-project
+  app:
+    container_name: sample-node-project
+    restart: always
+    build: .
+    ports: 
+      - '80:3000'
+    image: sample-node-project
