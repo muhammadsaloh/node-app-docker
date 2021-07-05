@@ -1,27 +1,61 @@
-version: "3.3"
-
+version: "3"
 services:
-  api:
-    build: .
-    image: sample-node-api
-    container_name: sample-node-api
-    restart: unless-stopped
-    networks:
-      - app-network
+  container_name: sample-node-project
+  restart: always
+  build: .
+  ports: 
+    - '80:3000'
+  image: sample-node-project
+    
 
-  proxy:
-    image: nginx:alpine
-    container_name: web-proxy
-    restart: unless-stopped
-    volumes:
-      - ./proxy.conf:/etc/nginx/conf.d/default.conf
-    ports:
-      - 80:80
-    depends_on:
-      - api
-    networks:
-      - app-network
 
-networks:
-  app-network:
-    driver: bridge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#     networks:
+#       - app-network
+
+#   proxy:
+#     image: nginx:alpine
+#     container_name: web-proxy
+#     restart: unless-stopped
+#     volumes:
+#       - ./proxy.conf:/etc/nginx/conf.d/default.conf
+#     ports:
+#       - 80:80
+#     depends_on:
+#       - api
+#     networks:
+#       - app-network
+
+# networks:
+#   app-network:
+#     driver: bridge
